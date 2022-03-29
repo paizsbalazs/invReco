@@ -1,6 +1,6 @@
 package com.sirchc.invReco;
 
-public class RecInv {
+public class InvReco {
 
     public Long licence;
     public String taxnumber;

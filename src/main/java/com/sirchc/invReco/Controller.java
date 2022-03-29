@@ -30,7 +30,7 @@ public class Controller {
         return recInv.taxnumber;
     }*/
 
-    @GetMapping("recInv")
+    @GetMapping("invReco")
     public String respond() {
 
         return "OK";
@@ -49,12 +49,12 @@ public class Controller {
 
     }*/
 
-    @PostMapping("/recInv")
-    public RecInv doSomeThing(@RequestBody RecInv recInv){
+    @PostMapping("/invReco")
+    public InvReco doSomeThing(@RequestBody InvReco invReco){
 
         Base64DecodePdf b64d = new Base64DecodePdf();
-        b64d.generate(recInv.getPdf(), recInv.getTaxnumber());
-        return recInv;
+        b64d.generate(invReco.getPdf(), invReco.getTaxnumber());
+        return invReco;
     }
 
 }
