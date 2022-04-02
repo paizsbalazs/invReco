@@ -2,11 +2,11 @@ package com.sirchc.invReco;
 
 public class InvReco {
 
-    public Long licence;
+    public String licence;
     public String taxnumber;
     public String pdf;
 
-    public Long getLicence() {
+    public String getLicence() {
         return licence;
     }
 
@@ -18,7 +18,7 @@ public class InvReco {
         return pdf;
     }
 
-    public void setLicence(Long licence) {
+    public void setLicence(String licence) {
         this.licence = licence;
     }
 

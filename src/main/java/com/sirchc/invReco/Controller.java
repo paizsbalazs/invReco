@@ -5,6 +5,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.FileNotFoundException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 @RestController
 public class Controller {
 
@@ -50,11 +55,18 @@ public class Controller {
     }*/
 
     @PostMapping("/invReco")
-    public InvReco doSomeThing(@RequestBody InvReco invReco){
+    public String doSomeThing(@RequestBody InvReco invReco) throws ClassNotFoundException, SQLException, FileNotFoundException {
 
-        Base64DecodePdf b64d = new Base64DecodePdf();
-        b64d.generate(invReco.getPdf(), invReco.getTaxnumber());
-        return invReco;
+        Class.forName("org.firebirdsql.jdbc.FBDriver");
+
+        Connection connection = DriverManager.getConnection(
+                "jdbc:firebirdsql://localhost:3050/c:/invRecBackend/INVRECO.fdb",
+                "SYSDBA", "masterkey");
+
+        Dao dao = new Dao(connection);
+        String result = dao.invreco(invReco);
+
+        return result;
     }
 
 }

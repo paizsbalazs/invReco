@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Base64;
 
 class Base64DecodePdf {
-    public void generate(String s, String t) {
+    public File generate(String s, String t) {
 
         LocalDateTime myDateObj = LocalDateTime.now();
         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd_MM_yyyy_HH_mm_ss");
@@ -21,5 +21,7 @@ class Base64DecodePdf {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        return file;
     }
 }
