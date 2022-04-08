@@ -1,8 +1,10 @@
 package com.sirchc.invReco;
 
+import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Base64;
 import javax.sql.rowset.serial.SerialBlob;
 import java.io.File;
@@ -10,6 +12,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.sql.*;
+import java.util.List;
 
 public class Dao {
 
@@ -20,7 +23,6 @@ public class Dao {
     }
 
     String invreco(InvReco invReco) throws FileNotFoundException, SQLException {
-
 
         String storedProcudureCall = "? = call INS_INVS(?, ?, ?, ?, ?)";
         /*CallableStatement cs = connection.prepareCall("{EXECUTE PROCEDURE INS_INVS(?,?,?,?,?)}");*/
@@ -49,6 +51,27 @@ public class Dao {
         /*System.out.println("Ez van " + cs.getString(1));*/
         cs.close();
         connection.close();
+
+        return result;
+    }
+
+    List<String> getpendinglist(String verifid) throws SQLException {
+        List<String> result = new ArrayList<>();
+
+        String storedProcudureCall = "? = call GET_PENDING_INVS(?)";
+        CallableStatement cs = null;
+        try {
+            cs = connection.prepareCall(storedProcudureCall);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        cs.registerOutParameter(1, Types.VARCHAR);
+        cs.setString(2, verifid);
+        ResultSet rs = cs.executeQuery();
+
+        while (rs.next()) {
+            System.out.println(rs.getString(1));
+        }
 
         return result;
     }

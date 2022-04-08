@@ -1,9 +1,6 @@
 package com.sirchc.invReco;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.FileNotFoundException;
 import java.sql.Connection;
@@ -67,6 +64,21 @@ public class Controller {
         String result = dao.invreco(invReco);
 
         return result;
+    }
+
+    @GetMapping("getPendingInvs/{verifid}")
+    public String getPendingInvs (@PathVariable String verifid) throws ClassNotFoundException, SQLException, FileNotFoundException {
+
+        Class.forName("org.firebirdsql.jdbc.FBDriver");
+
+        Connection connection = DriverManager.getConnection(
+                "jdbc:firebirdsql://localhost:3050/c:/invRecBackend/INVRECO.fdb",
+                "SYSDBA", "masterkey");
+
+        Dao dao = new Dao(connection);
+        dao.getpendinglist(verifid);
+
+        return "result";
     }
 
 }
