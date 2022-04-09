@@ -68,7 +68,7 @@ public class Controller {
     }
 
     @GetMapping("getPendingInvs/{verifid}")
-    public List<String> getPendingInvs (@PathVariable String verifid) throws ClassNotFoundException, SQLException, FileNotFoundException {
+    public List<PendingInvs> getPendingInvs (@PathVariable String verifid) throws ClassNotFoundException, SQLException, FileNotFoundException {
 
         Class.forName("org.firebirdsql.jdbc.FBDriver");
 
@@ -92,5 +92,7 @@ public class Controller {
         Dao dao = new Dao(connection);
         return dao.getpendinglistN(verifid);
     }
+
+
 
 }

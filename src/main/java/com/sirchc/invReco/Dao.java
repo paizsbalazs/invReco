@@ -55,8 +55,10 @@ public class Dao {
         return result;
     }
 
-    List<String> getpendinglist(String verifid) throws SQLException {
-        List<String> result = new ArrayList<>();
+    List<PendingInvs> getpendinglist(String verifid) throws SQLException {
+        /*List<String> result = new ArrayList<>();*/
+
+        List<PendingInvs> result = new ArrayList<>();
 
         String storedProcudureCall = "? = call GET_PENDING_INVS(?)";
         CallableStatement cs = null;
@@ -70,7 +72,8 @@ public class Dao {
         ResultSet rs = cs.executeQuery();
 
         while (rs.next()) {
-            result.add(rs.getString(1));
+            /*result.add(rs.getString(1));*/
+            result.add(new PendingInvs(rs.getString(1), rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)));
         }
 
         rs.close();
