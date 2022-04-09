@@ -70,10 +70,34 @@ public class Dao {
         ResultSet rs = cs.executeQuery();
 
         while (rs.next()) {
-            System.out.println(rs.getString(1));
+            result.add(rs.getString(1));
         }
+
+        rs.close();
+        cs.close();
+        connection.close();
 
         return result;
     }
+
+    public String getpendinglistN(String verifid) throws SQLException {
+
+        String storedProcudureCall = "? = call GET_PENDING_NUM_INVS(?)";
+        CallableStatement cs = null;
+        try {
+            cs = connection.prepareCall(storedProcudureCall);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        cs.registerOutParameter(1, Types.VARCHAR);
+        cs.setString(2, verifid);
+        ResultSet rs = cs.executeQuery();
+        rs.next();
+        String result = rs.getString(1);
+        cs.close();
+        connection.close();
+        return result;
+    }
+
 
 }

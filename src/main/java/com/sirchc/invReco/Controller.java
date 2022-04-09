@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 
 @RestController
 public class Controller {
@@ -67,7 +68,7 @@ public class Controller {
     }
 
     @GetMapping("getPendingInvs/{verifid}")
-    public String getPendingInvs (@PathVariable String verifid) throws ClassNotFoundException, SQLException, FileNotFoundException {
+    public List<String> getPendingInvs (@PathVariable String verifid) throws ClassNotFoundException, SQLException, FileNotFoundException {
 
         Class.forName("org.firebirdsql.jdbc.FBDriver");
 
@@ -76,9 +77,20 @@ public class Controller {
                 "SYSDBA", "masterkey");
 
         Dao dao = new Dao(connection);
-        dao.getpendinglist(verifid);
+        return dao.getpendinglist(verifid);
+    }
 
-        return "result";
+    @GetMapping("getPendingInvsN/{verifid}")
+    public String getPendingInvsN (@PathVariable String verifid) throws ClassNotFoundException, SQLException, FileNotFoundException {
+
+        Class.forName("org.firebirdsql.jdbc.FBDriver");
+
+        Connection connection = DriverManager.getConnection(
+                "jdbc:firebirdsql://localhost:3050/c:/invRecBackend/INVRECO.fdb",
+                "SYSDBA", "masterkey");
+
+        Dao dao = new Dao(connection);
+        return dao.getpendinglistN(verifid);
     }
 
 }
