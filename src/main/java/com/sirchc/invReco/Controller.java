@@ -55,6 +55,10 @@ public class Controller {
     @PostMapping("/invReco")
     public String doSomeThing(@RequestBody InvReco invReco) throws ClassNotFoundException, SQLException, FileNotFoundException {
 
+        if (!new Senderverify(invReco).getverify()) {
+            return "Access Denied";
+        }
+
         Class.forName("org.firebirdsql.jdbc.FBDriver");
 
         Connection connection = DriverManager.getConnection(
