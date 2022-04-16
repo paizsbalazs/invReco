@@ -71,6 +71,21 @@ public class Controller {
         return result;
     }
 
+    @PostMapping("/invSet")
+    public String doSomeThing(@RequestBody Invset invset) throws ClassNotFoundException, SQLException, FileNotFoundException {
+
+        Class.forName("org.firebirdsql.jdbc.FBDriver");
+
+        Connection connection = DriverManager.getConnection(
+                "jdbc:firebirdsql://localhost:3099/C:/invReco/release/INVRECO.fdb",
+                "SYSDBA", "masterkey");
+
+        Dao dao = new Dao(connection);
+        String result = dao.setinvset(invset);
+
+        return result;
+    }
+
     @GetMapping("getPendingInvs/{verifid}")
     public List<PendingInvs> getPendingInvs (@PathVariable String verifid) throws ClassNotFoundException, SQLException, FileNotFoundException {
 

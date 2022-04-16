@@ -22,7 +22,7 @@ public class Dao {
         this.connection = connection;
     }
 
-    String invreco(Invreco invReco) throws FileNotFoundException, SQLException {
+    public String invreco(Invreco invReco) throws FileNotFoundException, SQLException {
 
         String storedProcudureCall = "? = call INS_INVS(?, ?, ?, ?, ?)";
         /*CallableStatement cs = connection.prepareCall("{EXECUTE PROCEDURE INS_INVS(?,?,?,?,?)}");*/
@@ -55,7 +55,7 @@ public class Dao {
         return result;
     }
 
-    List<PendingInvs> getpendinglist(String verifid) throws SQLException {
+    public List<PendingInvs> getpendinglist(String verifid) throws SQLException {
         /*List<String> result = new ArrayList<>();*/
 
         List<PendingInvs> result = new ArrayList<>();
@@ -102,5 +102,30 @@ public class Dao {
         return result;
     }
 
+    public String setinvset(Invset invset) throws SQLException {
 
+        String storedProcudureCall = "? = call INS_INVSET(?, ?, ?)";
+        CallableStatement cs = null;
+        try {
+            cs = connection.prepareCall(storedProcudureCall);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        cs.registerOutParameter(1, Types.VARCHAR);
+        cs.setString(2, invset.supvatnum);
+        cs.setString(3, invset.cusvatnum);
+        cs.setString(4, invset.invnum);
+
+        /* Ez akkor, ha jó az új BLOB is
+        byte[] decodedByte = Base64.getEncoder().encode(invReco.pdf.getBytes());
+        Blob b = new SerialBlob(decodedByte);*/
+
+        cs.execute();
+        String result = cs.getString(1);
+        /*System.out.println("Ez van " + cs.getString(1));*/
+        cs.close();
+        connection.close();
+
+        return result;
+    }
 }
