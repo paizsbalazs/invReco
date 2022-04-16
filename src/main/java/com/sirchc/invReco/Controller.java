@@ -53,7 +53,7 @@ public class Controller {
     }*/
 
     @PostMapping("/invReco")
-    public String doSomeThing(@RequestBody InvReco invReco) throws ClassNotFoundException, SQLException, FileNotFoundException {
+    public String doSomeThing(@RequestBody Invreco invReco) throws ClassNotFoundException, SQLException, FileNotFoundException {
 
         if (!new Senderverify(invReco).getverify()) {
             return "Access Denied";

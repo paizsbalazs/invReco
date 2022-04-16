@@ -22,7 +22,7 @@ public class Dao {
         this.connection = connection;
     }
 
-    String invreco(InvReco invReco) throws FileNotFoundException, SQLException {
+    String invreco(Invreco invReco) throws FileNotFoundException, SQLException {
 
         String storedProcudureCall = "? = call INS_INVS(?, ?, ?, ?, ?)";
         /*CallableStatement cs = connection.prepareCall("{EXECUTE PROCEDURE INS_INVS(?,?,?,?,?)}");*/
