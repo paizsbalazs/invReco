@@ -22,7 +22,7 @@ public class Dao {
         this.connection = connection;
     }
 
-    public String invreco(Invreco invReco) throws FileNotFoundException, SQLException {
+    public String invreco(Invrecoo invReco) throws FileNotFoundException, SQLException {
 
         String storedProcudureCall = "? = call INS_INVS(?, ?, ?, ?, ?)";
         /*CallableStatement cs = connection.prepareCall("{EXECUTE PROCEDURE INS_INVS(?,?,?,?,?)}");*/
@@ -73,7 +73,7 @@ public class Dao {
 
         while (rs.next()) {
             /*result.add(rs.getString(1));*/
-            result.add(new PendingInvs(rs.getString(1), rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)));
+            result.add(new PendingInvs(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
         }
 
         rs.close();
@@ -126,6 +126,123 @@ public class Dao {
         cs.close();
         connection.close();
 
+        return result;
+    }
+
+    public String getReadylistN(String verifid) throws SQLException {
+
+        String storedProcudureCall = "? = call GET_READY_NUM_INVS(?)";
+        CallableStatement cs = null;
+        try {
+            cs = connection.prepareCall(storedProcudureCall);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        cs.registerOutParameter(1, Types.VARCHAR);
+        cs.setString(2, verifid);
+        ResultSet rs = cs.executeQuery();
+        rs.next();
+        String result = rs.getString(1);
+        cs.close();
+        connection.close();
+        return result;
+    }
+
+    public List<ReadyInvs> getreadylist(String verifid) throws SQLException {
+        /*List<String> result = new ArrayList<>();*/
+
+        List<ReadyInvs> result = new ArrayList<>();
+
+        String storedProcudureCall = "? = call GET_READY_INVS(?)";
+        CallableStatement cs = null;
+        try {
+            cs = connection.prepareCall(storedProcudureCall);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        cs.registerOutParameter(1, Types.VARCHAR);
+        cs.setString(2, verifid);
+        ResultSet rs = cs.executeQuery();
+
+        while (rs.next()) {
+            /*result.add(rs.getString(1));*/
+            result.add(new ReadyInvs(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)));
+        }
+
+        rs.close();
+        cs.close();
+        connection.close();
+
+        return result;
+    }
+
+    public List<PendingInvs> getproclist(String verifid) throws SQLException {
+        /*List<String> result = new ArrayList<>();*/
+
+        List<PendingInvs> result = new ArrayList<>();
+
+        String storedProcudureCall = "? = call GET_PROC_INVS(?)";
+        CallableStatement cs = null;
+        try {
+            cs = connection.prepareCall(storedProcudureCall);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        cs.registerOutParameter(1, Types.VARCHAR);
+        cs.setString(2, verifid);
+        ResultSet rs = cs.executeQuery();
+
+        while (rs.next()) {
+            /*result.add(rs.getString(1));*/
+            result.add(new PendingInvs(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+        }
+
+        rs.close();
+        cs.close();
+        connection.close();
+
+        return result;
+    }
+
+    public String getproclistN(String verifid) throws SQLException {
+
+        String storedProcudureCall = "? = call GET_PROC_NUM_INVS(?)";
+        CallableStatement cs = null;
+        try {
+            cs = connection.prepareCall(storedProcudureCall);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        cs.registerOutParameter(1, Types.VARCHAR);
+        cs.setString(2, verifid);
+        ResultSet rs = cs.executeQuery();
+        rs.next();
+        String result = rs.getString(1);
+        cs.close();
+        connection.close();
+        return result;
+    }
+
+    public String closeinv(String verifid, String invid) throws SQLException {
+
+        String storedProcudureCall = "? = call CLOSE_INVS(?,?)";
+        CallableStatement cs = null;
+        try {
+            cs = connection.prepareCall(storedProcudureCall);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        cs.registerOutParameter(1, Types.VARCHAR);
+        cs.setString(2, verifid);
+        cs.setString(3, invid);
+
+        System.out.println(verifid + " " + invid);
+
+        ResultSet rs = cs.executeQuery();
+        rs.next();
+        String result = rs.getString(1);
+        cs.close();
+        connection.close();
         return result;
     }
 }

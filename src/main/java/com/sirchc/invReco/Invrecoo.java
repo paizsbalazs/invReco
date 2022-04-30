@@ -1,12 +1,15 @@
 package com.sirchc.invReco;
 
-public class Invreco {
+public class Invrecoo {
 
     public String licence;
     public String taxnumber;
     public String pdf;
 
-    public Invreco() {
+    public Invrecoo(String licence, String taxnumber, String pdf) {
+        this.licence = licence;
+        this.taxnumber = taxnumber;
+        this.pdf = pdf;
     }
 
     public String getLicence() {

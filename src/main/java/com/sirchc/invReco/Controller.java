@@ -53,7 +53,7 @@ public class Controller {
     }*/
 
     @PostMapping("/invReco")
-    public String doSomeThing(@RequestBody Invreco invReco) throws ClassNotFoundException, SQLException, FileNotFoundException {
+    public String doSomeThing(@RequestBody Invrecoo invReco) throws ClassNotFoundException, SQLException, FileNotFoundException {
 
         if (!new Senderverify(invReco).getverify()) {
             return "Access Denied";
@@ -112,6 +112,69 @@ public class Controller {
         return dao.getpendinglistN(verifid);
     }
 
+    @GetMapping("getReadyInvsN/{verifid}")
+    public String getReadyInvsN (@PathVariable String verifid) throws ClassNotFoundException, SQLException, FileNotFoundException {
 
+        Class.forName("org.firebirdsql.jdbc.FBDriver");
+
+        Connection connection = DriverManager.getConnection(
+                "jdbc:firebirdsql://localhost:3099/C:/invReco/release/INVRECO.fdb",
+                "SYSDBA", "masterkey");
+
+        Dao dao = new Dao(connection);
+        return dao.getReadylistN(verifid);
+    }
+
+    @GetMapping("getReadyInvs/{verifid}")
+    public List<ReadyInvs> getReadyInvs (@PathVariable String verifid) throws ClassNotFoundException, SQLException, FileNotFoundException {
+
+        Class.forName("org.firebirdsql.jdbc.FBDriver");
+
+        Connection connection = DriverManager.getConnection(
+                "jdbc:firebirdsql://localhost:3099/C:/invReco/release/INVRECO.fdb",
+                "SYSDBA", "masterkey");
+
+        Dao dao = new Dao(connection);
+        return dao.getreadylist(verifid);
+    }
+
+    @GetMapping("getProcInvs/{verifid}")
+    public List<PendingInvs> getProcInvs (@PathVariable String verifid) throws ClassNotFoundException, SQLException, FileNotFoundException {
+
+        Class.forName("org.firebirdsql.jdbc.FBDriver");
+
+        Connection connection = DriverManager.getConnection(
+                "jdbc:firebirdsql://localhost:3099/C:/invReco/release/INVRECO.fdb",
+                "SYSDBA", "masterkey");
+
+        Dao dao = new Dao(connection);
+        return dao.getproclist(verifid);
+    }
+
+    @GetMapping("getProcInvsN/{verifid}")
+    public String getProcInvsN (@PathVariable String verifid) throws ClassNotFoundException, SQLException, FileNotFoundException {
+
+        Class.forName("org.firebirdsql.jdbc.FBDriver");
+
+        Connection connection = DriverManager.getConnection(
+                "jdbc:firebirdsql://localhost:3099/C:/invReco/release/INVRECO.fdb",
+                "SYSDBA", "masterkey");
+
+        Dao dao = new Dao(connection);
+        return dao.getproclistN(verifid);
+    }
+
+    @GetMapping("close/{verifid}/{invid}")
+    public String closeInvs (@PathVariable String verifid, @PathVariable String invid) throws ClassNotFoundException, SQLException, FileNotFoundException {
+
+        Class.forName("org.firebirdsql.jdbc.FBDriver");
+
+        Connection connection = DriverManager.getConnection(
+                "jdbc:firebirdsql://localhost:3099/C:/invReco/release/INVRECO.fdb",
+                "SYSDBA", "masterkey");
+
+        Dao dao = new Dao(connection);
+        return dao.closeinv(verifid, invid);
+    }
 
 }

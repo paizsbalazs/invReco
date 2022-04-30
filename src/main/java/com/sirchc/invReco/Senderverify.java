@@ -8,9 +8,9 @@ import java.util.List;
 
 public class Senderverify {
 
-    public Invreco invreco;
+    public Invrecoo invreco;
 
-    public Senderverify(Invreco invreco) {
+    public Senderverify(Invrecoo invreco) {
         this.invreco = invreco;
     }
 
