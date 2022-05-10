@@ -10,8 +10,8 @@ public class Senderverify {
 
     public Invrecoo invreco;
 
-    public Senderverify(Invrecoo invreco) {
-        this.invreco = invreco;
+    public Senderverify(Invrecoo invrecoo) {
+        this.invreco = invrecoo;
     }
 
     public boolean getverify() {

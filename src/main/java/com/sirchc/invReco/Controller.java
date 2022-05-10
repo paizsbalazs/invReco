@@ -62,7 +62,7 @@ public class Controller {
         Class.forName("org.firebirdsql.jdbc.FBDriver");
 
         Connection connection = DriverManager.getConnection(
-                "jdbc:firebirdsql://localhost:3099/C:/invReco/release/INVRECO.fdb",
+                "jdbc:firebirdsql://localhost:3051/C:/invReco/release/INVRECO.fdb",
                 "SYSDBA", "masterkey");
 
         Dao dao = new Dao(connection);
@@ -77,7 +77,7 @@ public class Controller {
         Class.forName("org.firebirdsql.jdbc.FBDriver");
 
         Connection connection = DriverManager.getConnection(
-                "jdbc:firebirdsql://localhost:3099/C:/invReco/release/INVRECO.fdb",
+                "jdbc:firebirdsql://localhost:3051/C:/invReco/release/INVRECO.fdb",
                 "SYSDBA", "masterkey");
 
         Dao dao = new Dao(connection);
@@ -92,7 +92,7 @@ public class Controller {
         Class.forName("org.firebirdsql.jdbc.FBDriver");
 
         Connection connection = DriverManager.getConnection(
-                "jdbc:firebirdsql://localhost:3099/C:/invReco/release/INVRECO.fdb",
+                "jdbc:firebirdsql://localhost:3051/C:/invReco/release/INVRECO.fdb",
                 "SYSDBA", "masterkey");
 
         Dao dao = new Dao(connection);
@@ -105,7 +105,7 @@ public class Controller {
         Class.forName("org.firebirdsql.jdbc.FBDriver");
 
         Connection connection = DriverManager.getConnection(
-                "jdbc:firebirdsql://localhost:3099/C:/invReco/release/INVRECO.fdb",
+                "jdbc:firebirdsql://localhost:3051/C:/invReco/release/INVRECO.fdb",
                 "SYSDBA", "masterkey");
 
         Dao dao = new Dao(connection);
@@ -118,7 +118,7 @@ public class Controller {
         Class.forName("org.firebirdsql.jdbc.FBDriver");
 
         Connection connection = DriverManager.getConnection(
-                "jdbc:firebirdsql://localhost:3099/C:/invReco/release/INVRECO.fdb",
+                "jdbc:firebirdsql://localhost:3051/C:/invReco/release/INVRECO.fdb",
                 "SYSDBA", "masterkey");
 
         Dao dao = new Dao(connection);
@@ -131,7 +131,7 @@ public class Controller {
         Class.forName("org.firebirdsql.jdbc.FBDriver");
 
         Connection connection = DriverManager.getConnection(
-                "jdbc:firebirdsql://localhost:3099/C:/invReco/release/INVRECO.fdb",
+                "jdbc:firebirdsql://localhost:3051/C:/invReco/release/INVRECO.fdb",
                 "SYSDBA", "masterkey");
 
         Dao dao = new Dao(connection);
@@ -144,7 +144,7 @@ public class Controller {
         Class.forName("org.firebirdsql.jdbc.FBDriver");
 
         Connection connection = DriverManager.getConnection(
-                "jdbc:firebirdsql://localhost:3099/C:/invReco/release/INVRECO.fdb",
+                "jdbc:firebirdsql://localhost:3051/C:/invReco/release/INVRECO.fdb",
                 "SYSDBA", "masterkey");
 
         Dao dao = new Dao(connection);
@@ -157,7 +157,7 @@ public class Controller {
         Class.forName("org.firebirdsql.jdbc.FBDriver");
 
         Connection connection = DriverManager.getConnection(
-                "jdbc:firebirdsql://localhost:3099/C:/invReco/release/INVRECO.fdb",
+                "jdbc:firebirdsql://localhost:3051/C:/invReco/release/INVRECO.fdb",
                 "SYSDBA", "masterkey");
 
         Dao dao = new Dao(connection);
@@ -170,7 +170,7 @@ public class Controller {
         Class.forName("org.firebirdsql.jdbc.FBDriver");
 
         Connection connection = DriverManager.getConnection(
-                "jdbc:firebirdsql://localhost:3099/C:/invReco/release/INVRECO.fdb",
+                "jdbc:firebirdsql://localhost:3051/C:/invReco/release/INVRECO.fdb",
                 "SYSDBA", "masterkey");
 
         Dao dao = new Dao(connection);

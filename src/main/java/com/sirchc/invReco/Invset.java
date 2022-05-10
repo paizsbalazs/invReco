@@ -6,6 +6,9 @@ public class Invset {
     public String cusvatnum;
     public String invnum;
 
-    public Invset() {
+    public Invset(String supvatnum, String cusvatnum, String invnum) {
+        this.supvatnum = supvatnum;
+        this.cusvatnum = cusvatnum;
+        this.invnum = invnum;
     }
 }
