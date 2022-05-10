@@ -1,5 +1,6 @@
 package com.sirchc.invReco;
 
+import org.firebirdsql.encodings.IEncodingFactory;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.FileNotFoundException;
@@ -62,7 +63,7 @@ public class Controller {
         Class.forName("org.firebirdsql.jdbc.FBDriver");
 
         Connection connection = DriverManager.getConnection(
-                "jdbc:firebirdsql://localhost:3051/C:/invReco/release/INVRECO.fdb",
+                "jdbc:firebirdsql://localhost:3051/C:/invReco/release/INVRECO.fdb?encoding=UTF8",
                 "SYSDBA", "masterkey");
 
         Dao dao = new Dao(connection);
@@ -77,7 +78,7 @@ public class Controller {
         Class.forName("org.firebirdsql.jdbc.FBDriver");
 
         Connection connection = DriverManager.getConnection(
-                "jdbc:firebirdsql://localhost:3051/C:/invReco/release/INVRECO.fdb",
+                "jdbc:firebirdsql://localhost:3051/C:/invReco/release/INVRECO.fdb?encoding=UTF8",
                 "SYSDBA", "masterkey");
 
         Dao dao = new Dao(connection);
@@ -92,7 +93,7 @@ public class Controller {
         Class.forName("org.firebirdsql.jdbc.FBDriver");
 
         Connection connection = DriverManager.getConnection(
-                "jdbc:firebirdsql://localhost:3051/C:/invReco/release/INVRECO.fdb",
+                "jdbc:firebirdsql://localhost:3051/C:/invReco/release/INVRECO.fdb?encoding=UTF8",
                 "SYSDBA", "masterkey");
 
         Dao dao = new Dao(connection);
@@ -105,7 +106,7 @@ public class Controller {
         Class.forName("org.firebirdsql.jdbc.FBDriver");
 
         Connection connection = DriverManager.getConnection(
-                "jdbc:firebirdsql://localhost:3051/C:/invReco/release/INVRECO.fdb",
+                "jdbc:firebirdsql://localhost:3051/C:/invReco/release/INVRECO.fdb?encoding=UTF8",
                 "SYSDBA", "masterkey");
 
         Dao dao = new Dao(connection);
@@ -118,7 +119,7 @@ public class Controller {
         Class.forName("org.firebirdsql.jdbc.FBDriver");
 
         Connection connection = DriverManager.getConnection(
-                "jdbc:firebirdsql://localhost:3051/C:/invReco/release/INVRECO.fdb",
+                "jdbc:firebirdsql://localhost:3051/C:/invReco/release/INVRECO.fdb?encoding=UTF8",
                 "SYSDBA", "masterkey");
 
         Dao dao = new Dao(connection);
@@ -131,7 +132,7 @@ public class Controller {
         Class.forName("org.firebirdsql.jdbc.FBDriver");
 
         Connection connection = DriverManager.getConnection(
-                "jdbc:firebirdsql://localhost:3051/C:/invReco/release/INVRECO.fdb",
+                "jdbc:firebirdsql://localhost:3051/C:/invReco/release/INVRECO.fdb?encoding=UTF8",
                 "SYSDBA", "masterkey");
 
         Dao dao = new Dao(connection);
@@ -144,7 +145,7 @@ public class Controller {
         Class.forName("org.firebirdsql.jdbc.FBDriver");
 
         Connection connection = DriverManager.getConnection(
-                "jdbc:firebirdsql://localhost:3051/C:/invReco/release/INVRECO.fdb",
+                "jdbc:firebirdsql://localhost:3051/C:/invReco/release/INVRECO.fdb?encoding=UTF8",
                 "SYSDBA", "masterkey");
 
         Dao dao = new Dao(connection);
@@ -157,7 +158,7 @@ public class Controller {
         Class.forName("org.firebirdsql.jdbc.FBDriver");
 
         Connection connection = DriverManager.getConnection(
-                "jdbc:firebirdsql://localhost:3051/C:/invReco/release/INVRECO.fdb",
+                "jdbc:firebirdsql://localhost:3051/C:/invReco/release/INVRECO.fdb?encoding=UTF8",
                 "SYSDBA", "masterkey");
 
         Dao dao = new Dao(connection);
@@ -170,7 +171,7 @@ public class Controller {
         Class.forName("org.firebirdsql.jdbc.FBDriver");
 
         Connection connection = DriverManager.getConnection(
-                "jdbc:firebirdsql://localhost:3051/C:/invReco/release/INVRECO.fdb",
+                "jdbc:firebirdsql://localhost:3051/C:/invReco/release/INVRECO.fdb?encoding=UTF8",
                 "SYSDBA", "masterkey");
 
         Dao dao = new Dao(connection);

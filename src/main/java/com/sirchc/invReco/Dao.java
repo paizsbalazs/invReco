@@ -34,7 +34,7 @@ public class Dao {
         }
         cs.registerOutParameter(1, Types.VARCHAR);
         cs.setString(2, invReco.licence);
-        cs.setInt(3, 1);
+        cs.setString(3, invReco.invtype);
         cs.setString(4, invReco.taxnumber);
 
         /* Ez akkor, ha jó az új BLOB is
