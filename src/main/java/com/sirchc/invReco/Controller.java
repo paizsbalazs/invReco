@@ -178,4 +178,17 @@ public class Controller {
         return dao.closeinv(verifid, invid);
     }
 
+    @GetMapping("reprocInvs/{verifid}")
+    public String reProcInvs (@PathVariable String verifid) throws ClassNotFoundException, SQLException, FileNotFoundException {
+
+        Class.forName("org.firebirdsql.jdbc.FBDriver");
+
+        Connection connection = DriverManager.getConnection(
+                "jdbc:firebirdsql://localhost:3051/C:/invReco/release/INVRECO.fdb?encoding=UTF8",
+                "SYSDBA", "masterkey");
+
+        Dao dao = new Dao(connection);
+        return dao.reproc(verifid);
+    }
+
 }

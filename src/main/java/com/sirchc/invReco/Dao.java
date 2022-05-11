@@ -245,4 +245,23 @@ public class Dao {
         connection.close();
         return result;
     }
+
+    public String reproc(String verifid) throws SQLException {
+
+        String storedProcudureCall = "? = call REQ_REPROC_INVS(?)";
+        CallableStatement cs = null;
+        try {
+            cs = connection.prepareCall(storedProcudureCall);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        cs.registerOutParameter(1, Types.VARCHAR);
+        cs.setString(2, verifid);
+        ResultSet rs = cs.executeQuery();
+        rs.next();
+        String result = rs.getString(1);
+        cs.close();
+        connection.close();
+        return result;
+    }
 }
