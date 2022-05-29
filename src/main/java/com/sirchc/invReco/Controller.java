@@ -140,7 +140,7 @@ public class Controller {
     }
 
     @GetMapping("getProcInvs/{verifid}")
-    public List<PendingInvs> getProcInvs (@PathVariable String verifid) throws ClassNotFoundException, SQLException, FileNotFoundException {
+    public List<Procinvs> getProcInvs (@PathVariable String verifid) throws ClassNotFoundException, SQLException, FileNotFoundException {
 
         Class.forName("org.firebirdsql.jdbc.FBDriver");
 

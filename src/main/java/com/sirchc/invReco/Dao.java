@@ -73,7 +73,7 @@ public class Dao {
 
         while (rs.next()) {
             /*result.add(rs.getString(1));*/
-            result.add(new PendingInvs(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+            result.add(new PendingInvs(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
         }
 
         rs.close();
@@ -176,10 +176,10 @@ public class Dao {
         return result;
     }
 
-    public List<PendingInvs> getproclist(String verifid) throws SQLException {
+    public List<Procinvs> getproclist(String verifid) throws SQLException {
         /*List<String> result = new ArrayList<>();*/
 
-        List<PendingInvs> result = new ArrayList<>();
+        List<Procinvs> result = new ArrayList<>();
 
         String storedProcudureCall = "? = call GET_PROC_INVS(?)";
         CallableStatement cs = null;
@@ -194,7 +194,7 @@ public class Dao {
 
         while (rs.next()) {
             /*result.add(rs.getString(1));*/
-            result.add(new PendingInvs(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+            result.add(new Procinvs(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
         }
 
         rs.close();
